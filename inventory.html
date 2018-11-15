@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>仓储管理系统</title>
   <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/common.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -72,20 +73,111 @@
       </div>
     </div>
   
-  <div class="layui-body">
-    <!-- 内容主体区域 -->
-    <div style="padding: 20% 40%;">
-      <h1>欢迎来到仓储管理后台</h1>
+  <div class="layui-body cmm-div-container">
+    <!-- 查询表单区域 -->
+    <div class="layui-form layui-card layui-bg-gray">
+      <!-- 面板Header -->
+      <div class="layui-card-header"><h3>库存查询</h3></div>
+      <!-- 面板Body -->
+      <div class="layui-card-body">
+        <!-- 一行表单项 -->
+        <div class="layui-form-item">
+          <!-- 货物编号 -->
+          <div class="layui-inline">
+            <label class="layui-form-label">货物编号</label>
+            <div class="layui-input-inline" style="width: 25em">
+              <input type="text" name="goodsNo" maxlength="36" autocomplete="off" placeholder="请输入货物编号" class="layui-input">
+            </div>
+          </div>
+          <!-- 货物名称 -->
+          <div class="layui-inline">
+            <label class="layui-form-label">货物名称</label>
+            <div class="layui-input-inline">
+              <input type="text" name="goodsName" autocomplete="off" placeholder="请输入货物名称" class="layui-input">
+            </div>
+          </div>
+        </div>
+
+        <!-- 一行表单项 -->
+        <div class="layui-form-item">
+          <!-- 货物规格 -->
+          <div class="layui-inline" style="width: 33.5em">
+            <label class="layui-form-label">货物规格</label>
+            <!-- 长 -->
+            <div class="layui-input-inline" style="width: 5em">
+              <input type="text" name="goodsLength" autocomplete="off" placeholder="长(cm)" class="layui-input">
+            </div>
+            <div class="layui-form-mid">×</div>
+            <!-- 宽 -->
+            <div class="layui-input-inline" style="width: 5em">
+              <input type="text" name="goodsWidth" autocomplete="off" placeholder="宽(cm)" class="layui-input">
+            </div>
+            <div class="layui-form-mid">×</div>
+            <!-- 高 -->
+            <div class="layui-input-inline" style="width: 5em">
+              <input type="text" name="goodsHeight" autocomplete="off" placeholder="高(cm)" class="layui-input">
+            </div>
+          </div>
+          <!-- 货物保价 -->
+          <div class="layui-inline">
+            <label class="layui-form-label">货物保价</label>
+            <div class="layui-input-inline" style="width: 5em">
+              <input type="text" name="goodsValueMin" autocomplete="off" placeholder="￥" class="layui-input">
+            </div>
+            <div class="layui-form-mid">-</div>
+            <div class="layui-input-inline" style="width: 5em">
+              <input type="text" name="goodsValueMax" autocomplete="off" placeholder="￥" class="layui-input">
+            </div>
+          </div>
+          <!-- 在库数量 -->
+          <div class="layui-inline">
+            <label class="layui-form-label">在库数量</label>
+            <div class="layui-input-inline" style="width: 5em">
+              <input type="text" name="countMin" autocomplete="off" placeholder=">=" class="layui-input">
+            </div>
+            <div class="layui-form-mid">-</div>
+            <div class="layui-input-inline" style="width: 5em">
+              <input type="text" name="countMax" autocomplete="off" placeholder="<=" class="layui-input">
+            </div>
+          </div>
+        </div>
+        
+        <!-- 表单项到底了 -->
+      </div>
+    </div>
+
+    <!-- 数据表格区域 -->
+    <div>
+      <table id="main-table" class="layui-hide"></table>
     </div>
   </div>
   
 </div>
-<script src="layui/layui.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="layui/layui.js" charset="utf-8"></script>
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
+layui.use(['element', 'table'], function(){
   var element = layui.element;
-  
+  var table = layui.table;
+
+  // 渲染数据表格
+  table.render({
+    elem: '#main-table'
+    ,url: 'data/inventory.json'
+    ,cols: [[
+      {type: 'numbers', title: '序号', align: 'center', width: 60}
+      ,{field: 'goodsNo', width: 400, title: '货物编号', sort: true}
+      ,{field: 'goodsName', title: '货物名称'}
+      ,{field: 'goodsSize', width: 150, title: '货物规格'}
+      ,{field: 'goodsValue', width: 120, title: '货物保价', sort: true}
+      ,{field: 'count', width: 120, title: '在库数量', sort: true}
+    ]]
+    ,page: {
+      curr: location.hash.replace('#!page=', '')
+      ,hash: 'page'
+    }
+  });
 });
 </script>
 </body>
