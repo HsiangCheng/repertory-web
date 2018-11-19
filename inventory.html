@@ -28,7 +28,7 @@
       <div class="layui-side-scroll">
         <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
         <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-          <li class="layui-nav-item">
+          <li class="layui-nav-item layui-nav-itemed">
             <a class="" href="javascript:;">库存管理</a>
             <dl class="layui-nav-child">
               <dd><a href="inventory.html">库存查询</a></dd>
@@ -75,7 +75,7 @@
   
   <div class="layui-body cmm-div-container">
     <!-- 查询表单区域 -->
-    <div class="layui-form layui-card layui-bg-gray">
+    <div class="layui-form layui-card layui-bg-gray" lay-filter="search-form">
       <!-- 面板Header -->
       <div class="layui-card-header"><h3>库存查询</h3></div>
       <!-- 面板Body -->
@@ -105,43 +105,50 @@
             <label class="layui-form-label">货物规格</label>
             <!-- 长 -->
             <div class="layui-input-inline" style="width: 5em">
-              <input type="text" name="goodsLength" autocomplete="off" placeholder="长(cm)" class="layui-input">
+              <input type="text" name="goodsLength" autocomplete="off" placeholder="长(cm)" class="layui-input" lay-verify="nullableNumber">
             </div>
             <div class="layui-form-mid">×</div>
             <!-- 宽 -->
             <div class="layui-input-inline" style="width: 5em">
-              <input type="text" name="goodsWidth" autocomplete="off" placeholder="宽(cm)" class="layui-input">
+              <input type="text" name="goodsWidth" autocomplete="off" placeholder="宽(cm)" class="layui-input" lay-verify="nullableNumber">
             </div>
             <div class="layui-form-mid">×</div>
             <!-- 高 -->
             <div class="layui-input-inline" style="width: 5em">
-              <input type="text" name="goodsHeight" autocomplete="off" placeholder="高(cm)" class="layui-input">
+              <input type="text" name="goodsHeight" autocomplete="off" placeholder="高(cm)" class="layui-input" lay-verify="nullableNumber">
             </div>
           </div>
           <!-- 货物保价 -->
           <div class="layui-inline">
             <label class="layui-form-label">货物保价</label>
             <div class="layui-input-inline" style="width: 5em">
-              <input type="text" name="goodsValueMin" autocomplete="off" placeholder="￥" class="layui-input">
+              <input type="text" name="goodsValueMin" autocomplete="off" placeholder="￥" class="layui-input" lay-verify="nullableNumber">
             </div>
             <div class="layui-form-mid">-</div>
             <div class="layui-input-inline" style="width: 5em">
-              <input type="text" name="goodsValueMax" autocomplete="off" placeholder="￥" class="layui-input">
+              <input type="text" name="goodsValueMax" autocomplete="off" placeholder="￥" class="layui-input" lay-verify="nullableNumber">
             </div>
           </div>
           <!-- 在库数量 -->
           <div class="layui-inline">
             <label class="layui-form-label">在库数量</label>
             <div class="layui-input-inline" style="width: 5em">
-              <input type="text" name="countMin" autocomplete="off" placeholder=">=" class="layui-input">
+              <input type="text" name="countMin" autocomplete="off" placeholder=">=" class="layui-input" lay-verify="integer">
             </div>
             <div class="layui-form-mid">-</div>
             <div class="layui-input-inline" style="width: 5em">
-              <input type="text" name="countMax" autocomplete="off" placeholder="<=" class="layui-input">
+              <input type="text" name="countMax" autocomplete="off" placeholder="<=" class="layui-input" lay-verify="integer">
             </div>
           </div>
         </div>
-        
+        <!-- 一行表单项 -->
+        <div class="layui-form-item">
+          <!-- 提交按钮 -->
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="submit-btn">查询</button>
+            <button class="layui-btn layui-btn-primary" lay-submit="" lay-filter="reset-btn">重置</button>
+          </div>
+        </div>
         <!-- 表单项到底了 -->
       </div>
     </div>
@@ -155,11 +162,14 @@
 </div>
 <script src="js/jquery-3.3.1.js"></script>
 <script src="layui/layui.js" charset="utf-8"></script>
+<script src="js/verify.js"></script>
+
 <script>
 //JavaScript代码区域
-layui.use(['element', 'table'], function(){
+layui.use(['element', 'table', 'form'], function(){
   var element = layui.element;
   var table = layui.table;
+  var form = layui.form;
 
   // 渲染数据表格
   table.render({
@@ -177,6 +187,40 @@ layui.use(['element', 'table'], function(){
       curr: location.hash.replace('#!page=', '')
       ,hash: 'page'
     }
+  });
+
+  function initSearchForm() {
+    form.val('search-form', {
+      'goodsNo': ''
+      ,'goodsName': ''
+      ,'goodsLength': ''
+      ,'goodsWidth': ''
+      ,'goodsHeight': ''
+      ,'goodsValueMin': ''
+      ,'goodsValueMax': ''
+      ,'countMin': ''
+      ,'countMax': ''
+    })
+  }
+
+  // 注册表单校验规则
+  form.verify({
+    integer: validInteger
+    ,nullableNumber: validNumber
+  });
+
+  //监听查询
+  form.on('submit(submit-btn)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+
+  //监听重置
+  form.on('submit(reset-btn)', function(data){
+    initSearchForm();
+    return false;
   });
 });
 </script>
