@@ -9,69 +9,10 @@
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
-    <div class="layui-logo">仓储管理系统</div>
-    <ul class="layui-nav layui-layout-right">
-      <li class="layui-nav-item">
-        <a href="javascript:;">
-          贤心
-        </a>
-        <dl class="layui-nav-child">
-          <dd><a href="change-password.html">修改密码</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item"><a href="">退出登录</a></li>
-    </ul>
-  </div>
-  
-  <div class="layui-side layui-bg-black">
-      <div class="layui-side-scroll">
-        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-        <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-          <li class="layui-nav-item layui-nav-itemed">
-            <a class="" href="javascript:;">库存管理</a>
-            <dl class="layui-nav-child">
-              <dd><a href="inventory.html">库存查询</a></dd>
-            </dl>
-          </li>
-          <li class="layui-nav-item">
-            <a href="javascript:;">出入库管理</a>
-            <dl class="layui-nav-child">
-              <dd><a href="storage-record.html">出入库记录</a></dd>
-              <dd><a href="in-storage.html">货物入库</a></dd>
-              <dd><a href="out-storage.html">货物出库</a></dd>
-            </dl>
-          </li>
-          <li class="layui-nav-item">
-            <a href="javascript:;">人员管理</a>
-            <dl class="layui-nav-child">
-              <dd><a href="repertory-admin.html">人员信息查询</a></dd>
-              <dd><a href="import-repertory-admin.html">人员导入</a></dd>
-            </dl>
-          </li>
-          <li class="layui-nav-item">
-            <a href="javascript:;">供应商管理</a>
-            <dl class="layui-nav-child">
-              <dd><a href="supplier.html">供应商信息查询</a></dd>
-              <dd><a href="import-supplier.html">供应商导入</a></dd>
-            </dl>
-          </li>
-          <li class="layui-nav-item">
-            <a href="javascript:;">货物信息管理</a>
-            <dl class="layui-nav-child">
-              <dd><a href="goods.html">货物信息查询</a></dd>
-              <dd><a href="import-goods.html">货物信息导入</a></dd>
-            </dl>
-          </li>
-          <li class="layui-nav-item">
-            <a href="javascript:;">系统管理</a>
-            <dl class="layui-nav-child">
-              <dd><a href="login-log.html">登录日志</a></dd>
-            </dl>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <!-- 头部导航 -->
+  <div id="header"></div>
+  <!-- 左侧导航 -->
+  <div id="left-nav" class="layui-side layui-bg-black"></div>
   
   <div class="layui-body cmm-div-container">
     <!-- 查询表单区域 -->
@@ -161,7 +102,8 @@
   
 </div>
 <script src="js/jquery-3.3.1.js"></script>
-<script src="layui/layui.js" charset="utf-8"></script>
+<script src="js/moudle.js"></script>
+<script src="layui/layui.js"></script>
 <script src="js/verify.js"></script>
 
 <script>
@@ -170,6 +112,9 @@ layui.use(['element', 'table', 'form'], function(){
   var element = layui.element;
   var table = layui.table;
   var form = layui.form;
+
+  // 侧边栏展开初始化
+  $('#inventory-nav').addClass('layui-nav-itemed');
 
   // 渲染数据表格
   table.render({
@@ -223,6 +168,7 @@ layui.use(['element', 'table', 'form'], function(){
     return false;
   });
 });
+
 </script>
 </body>
 </html>
