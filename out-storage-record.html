@@ -14,9 +14,9 @@
   <div id="left-nav" class="layui-side layui-bg-black"></div>
   
   <div class="layui-body">
-    <!-- 内容主体区域 -->
-    <div style="padding: 20% 40%;">
-      <h1>欢迎来到仓储管理后台</h1>
+    <!-- 数据表格区域 -->
+    <div>
+      <table id="main-table" class="layui-hide"></table>
     </div>
   </div>
   
@@ -28,9 +28,36 @@
 
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
+layui.use(['element', 'table', 'form'], function(){
   var element = layui.element;
-  
+  var table = layui.table;
+  var form = layui.form;
+
+  // 侧边栏展开初始化
+  $('#storage-nav').addClass('layui-nav-itemed');
+  $('#out-storage-record-item').addClass('layui-this');
+
+  // 渲染数据表格
+  table.render({
+    elem: '#main-table'
+    ,url: 'data/out-storage-record.json'
+    ,cols: [[
+      {type: 'numbers', title: '序号', align: 'center', width: 60}
+      ,{field: 'goodsNo', width: 120, title: '货物编号', sort: true}
+      ,{field: 'goodsName', title: '货物名称'}
+      ,{field: 'count', width: 120, title: '在库数量', sort: true}
+      ,{field: 'customerNo', width: 150, title: '客户序号'}
+      ,{field: 'customerName', width: 150, title: '客户'}
+      ,{field: 'customerPerson', width: 120, title: '客户代表'}
+      ,{field: 'customerTelephone', width: 120, title: '客户电话'}
+      ,{field: 'customerMail', width: 210, title: '客户邮件'}
+      ,{field: 'customerAddress', width: 230, title: '客户地址'}
+    ]]
+    ,page: {
+      curr: location.hash.replace('#!page=', '')
+      ,hash: 'page'
+    }
+  });
 });
 </script>
 </body>

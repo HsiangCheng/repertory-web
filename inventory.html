@@ -115,6 +115,7 @@ layui.use(['element', 'table', 'form'], function(){
 
   // 侧边栏展开初始化
   $('#inventory-nav').addClass('layui-nav-itemed');
+  $('#inventory-item').addClass('layui-this');
 
   // 渲染数据表格
   table.render({
@@ -125,7 +126,7 @@ layui.use(['element', 'table', 'form'], function(){
       ,{field: 'goodsNo', width: 400, title: '货物编号', sort: true}
       ,{field: 'goodsName', title: '货物名称'}
       ,{field: 'goodsSize', width: 150, title: '货物规格'}
-      ,{field: 'goodsValue', width: 120, title: '货物保价', sort: true}
+      ,{field: 'goodsValue', width: 120, title: '采购价', sort: true}
       ,{field: 'count', width: 120, title: '在库数量', sort: true}
     ]]
     ,page: {

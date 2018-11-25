@@ -4,70 +4,70 @@
     "count": 1000,
     "data": [
         {
-            "goodsNo": "11a6d277-e675-43cc-ac88-b9ebde4c5f8a",
+            "goodsNo": "11a6d277",
             "goodsName": "货物1",
             "goodsSize": "10*10*15",
             "goodsValue": 18.21,
             "count": 100
         },
         {
-            "goodsNo": "68507c13-c312-499a-8df5-d173e3e09fe6",
+            "goodsNo": "68507c13",
             "goodsName": "货物2",
             "goodsSize": "20*10*15",
             "goodsValue": 174.21,
             "count": 100
         },
         {
-            "goodsNo": "dacd2422-0c2f-4433-81b2-305106837d6d",
+            "goodsNo": "dacd2422",
             "goodsName": "货物3",
             "goodsSize": "10*30*15",
             "goodsValue": 128.21,
             "count": 100
         },
         {
-            "goodsNo": "98e4e5ad-8d1c-4b84-9f7a-a366013ea4ba",
+            "goodsNo": "98e4e5ad",
             "goodsName": "货物4",
             "goodsSize": "50*10*15",
             "goodsValue": 8.21,
             "count": 100
         },
         {
-            "goodsNo": "83c3f286-ee6c-4c36-8e8c-d03f3b0a2fb5",
+            "goodsNo": "83c3f286",
             "goodsName": "货物5",
             "goodsSize": "10*10*78",
             "goodsValue": 18.10,
             "count": 100
         },
         {
-            "goodsNo": "aa63a9ad-5ce1-494f-b631-db655bf6003b",
+            "goodsNo": "aa63a9ad",
             "goodsName": "货物6",
             "goodsSize": "10*20*15",
             "goodsValue": 148.21,
             "count": 100
         },
         {
-            "goodsNo": "2156d7a9-b4bc-4106-8711-02584163a3f5",
+            "goodsNo": "2156d7a9",
             "goodsName": "货物7",
             "goodsSize": "10*10*15",
             "goodsValue": 718.21,
             "count": 100
         },
         {
-            "goodsNo": "55246305-a4a9-4363-805b-50615d425702",
+            "goodsNo": "55246305",
             "goodsName": "货物8",
             "goodsSize": "10*10*15",
             "goodsValue": 198.21,
             "count": 100
         },
         {
-            "goodsNo": "62fff0df-a2e8-4b7b-8f46-dff08f14a790",
+            "goodsNo": "62fff0df",
             "goodsName": "货物9",
             "goodsSize": "10*10*15",
             "goodsValue": 18.21,
             "count": 100
         },
         {
-            "goodsNo": "d454820d-b1ec-45e7-963a-e6d173be7c49",
+            "goodsNo": "d454820d",
             "goodsName": "货物10",
             "goodsSize": "10*10*15",
             "goodsValue": 18.21,

@@ -14,9 +14,9 @@
   <div id="left-nav" class="layui-side layui-bg-black"></div>
   
   <div class="layui-body">
-    <!-- 内容主体区域 -->
-    <div style="padding: 20% 40%;">
-      <h1>欢迎来到仓储管理后台</h1>
+    <!-- 数据表格区域 -->
+    <div>
+      <table id="main-table" lay-filter="main-table" class="layui-hide"></table>
     </div>
   </div>
   
@@ -28,10 +28,76 @@
 
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
+layui.use(['element', 'table', 'form'], function(){
   var element = layui.element;
-  
+  var table = layui.table;
+  var form = layui.form;
+
+  // 侧边栏展开初始化
+  $('#supplier-nav').addClass('layui-nav-itemed');
+  $('#supplier-item').addClass('layui-this');
+
+  // 渲染数据表格
+  table.render({
+    elem: '#main-table'
+    ,url: 'data/supplier.json'
+    ,cols: [[
+      {type: 'numbers', title: '序号', align: 'center', width: 60}
+      ,{field: 'supplierNo', width: 120, title: '供应商编号'}
+      ,{field: 'supplierName', width: 150, title: '供应商名称'}
+      ,{field: 'supplierPerson', width: 120, title: '供应商代表'}
+      ,{field: 'supplierTelephone', width: 150, title: '联系电话'}
+      ,{field: 'supplierMail', width: 210, title: '电子邮箱'}
+      ,{field: 'supplierAddress', title: '供应商地址'}
+      ,{fixed: 'right', title:'操作', toolbar: '#tableBarTpl', width:150}
+    ]]
+    ,page: {
+      curr: location.hash.replace('#!page=', '')
+      ,hash: 'page'
+    }
+  });
+
+  table.on('tool(main-table)', function(rowObject) {
+    var data = rowObject.data;
+    var event = rowObject.event;
+    console.log(event);
+    switch(event) {
+      case 'edit':
+        editRow(rowObject);
+        break;
+      case 'del':
+        deleteRow(rowObject);
+        break;
+    }
+  });
+
+  // 编辑表格行事件的响应函数
+  function editRow(rowObject) {
+    var data = rowObject.data;
+    layer.prompt({
+        formType: 2
+        ,value: data.supplierMail
+      }, function(value, index){
+        rowObject.update({
+          supplierMail: value
+        });
+        layer.close(index);
+      });
+  }
+
+  // 删除表格行事件的响应函数
+  function deleteRow(rowObject) {
+    layer.confirm('真的删除行么', function(index){
+        rowObject.del();
+        layer.close(index);
+      });
+  }
 });
+</script>
+
+<script type="text/html" id="tableBarTpl">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 </body>
 </html>

@@ -14,9 +14,9 @@
   <div id="left-nav" class="layui-side layui-bg-black"></div>
   
   <div class="layui-body">
-    <!-- 内容主体区域 -->
-    <div style="padding: 20% 40%;">
-      <h1>欢迎来到仓储管理后台</h1>
+    <!-- 数据表格区域 -->
+    <div>
+      <table id="main-table" class="layui-hide"></table>
     </div>
   </div>
   
@@ -28,9 +28,31 @@
 
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
+layui.use(['element', 'table', 'form'], function(){
   var element = layui.element;
-  
+  var table = layui.table;
+  var form = layui.form;
+
+  // 侧边栏展开初始化
+  $('#goods-nav').addClass('layui-nav-itemed');
+  $('#goods-item').addClass('layui-this');
+
+  // 渲染数据表格
+  table.render({
+    elem: '#main-table'
+    ,url: 'data/goods.json'
+    ,cols: [[
+      {type: 'numbers', title: '序号', align: 'center', width: 60}
+      ,{field: 'goodsNo', width: 120, title: '货物编号'}
+      ,{field: 'goodsName', title: '货物名称'}
+      ,{field: 'goodsSize', title: '货物规格'}
+      ,{field: 'goodsValue', title: '采购价'}
+    ]]
+    ,page: {
+      curr: location.hash.replace('#!page=', '')
+      ,hash: 'page'
+    }
+  });
 });
 </script>
 </body>

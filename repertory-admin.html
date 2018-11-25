@@ -14,9 +14,9 @@
   <div id="left-nav" class="layui-side layui-bg-black"></div>
   
   <div class="layui-body">
-    <!-- 内容主体区域 -->
-    <div style="padding: 20% 40%;">
-      <h1>欢迎来到仓储管理后台</h1>
+    <!-- 数据表格区域 -->
+    <div>
+      <table id="main-table" class="layui-hide"></table>
     </div>
   </div>
   
@@ -28,9 +28,32 @@
 
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
+layui.use(['element', 'table', 'form'], function(){
   var element = layui.element;
-  
+  var table = layui.table;
+  var form = layui.form;
+
+  // 侧边栏展开初始化
+  $('#repertory-admin-nav').addClass('layui-nav-itemed');
+  $('#repertory-admin-item').addClass('layui-this');
+
+  // 渲染数据表格
+  table.render({
+    elem: '#main-table'
+    ,url: 'data/repertory-admin.json'
+    ,cols: [[
+      {type: 'numbers', title: '序号', align: 'center', width: 60}
+      ,{field: 'repoAdminNo', width: 120, title: '人员编号'}
+      ,{field: 'repoAdminName', width: 100, title: '姓名'}
+      ,{field: 'repoAdminSex', width: 80, title: '性别'}
+      ,{field: 'repoAdminTelephone', width: 150, title: '联系电话'}
+      ,{field: 'repoAdminAddress', title: '现居地址'}
+    ]]
+    ,page: {
+      curr: location.hash.replace('#!page=', '')
+      ,hash: 'page'
+    }
+  });
 });
 </script>
 </body>

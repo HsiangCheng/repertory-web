@@ -1,0 +1,32 @@
+{
+    "code": 0,
+	"msg": "",
+    "count": 1000,
+    "data": [
+        {
+            "goodsId": 2,
+            "goodsNo": "H321987",
+            "goodsName": "货物1",
+            "goodsSize": "10*10*15",
+            "goodsValue": 18.21
+        },{
+            "goodsId": 3,
+            "goodsNo": "H789456",
+            "goodsName": "货物2",
+            "goodsSize": "20*10*15",
+            "goodsValue": 174.21
+        },{
+            "goodsId": 4,
+            "goodsNo": "H123456",
+            "goodsName": "货物3",
+            "goodsSize": "10*30*15",
+            "goodsValue": 128.21
+        },{
+            "goodsId": 6,
+            "goodsNo": "H987112",
+            "goodsName": "货物4",
+            "goodsSize": "50*10*15",
+            "goodsValue": 8.21
+        }
+    ]
+}
