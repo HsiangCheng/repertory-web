@@ -1,0 +1,43 @@
+{
+    "code": 0,
+	"msg": "",
+    "count": 1000,
+    "data": [
+        {
+            "repoAdminId": 1,
+            "repoAdminNo": "JK00136980",
+            "repoAdminName": "王往旺",
+            "repoAdminSex": "男",
+            "repoAdminTelephone": "17316735080",
+            "repoAdminAddress": "浙江省杭州市滨江区滨兴小区"
+        },{
+            "repoAdminId": 2,
+            "repoAdminNo": "JK00136981",
+            "repoAdminName": "刘纽星",
+            "repoAdminSex": "男",
+            "repoAdminTelephone": "17316737777",
+            "repoAdminAddress": "浙江省杭州市滨江区滨兴小区"
+        },{
+            "repoAdminId": 3,
+            "repoAdminNo": "JK00136982",
+            "repoAdminName": "潘贝贝",
+            "repoAdminSex": "女",
+            "repoAdminTelephone": "17385235080",
+            "repoAdminAddress": "浙江省杭州市滨江区滨康小区"
+        },{
+            "repoAdminId": 4,
+            "repoAdminNo": "JK00136983",
+            "repoAdminName": "庞晓峰",
+            "repoAdminSex": "男",
+            "repoAdminTelephone": "17316778952",
+            "repoAdminAddress": "浙江省杭州市滨江区滨兴小区"
+        },{
+            "repoAdminId": 5,
+            "repoAdminNo": "JK00136984",
+            "repoAdminName": "田甜",
+            "repoAdminSex": "女",
+            "repoAdminTelephone": "17312345678",
+            "repoAdminAddress": "浙江省杭州市滨江区滨兴小区"
+        }
+    ]
+}

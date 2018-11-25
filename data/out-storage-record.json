@@ -1,0 +1,80 @@
+{
+    "code": 0,
+	"msg": "",
+    "count": 1000,
+    "data": [
+        {
+            "goodsNo": "98e4e5ad-8d1c-4b84-9f7a-a366013ea4ba",
+            "goodsName": "货物4",
+            "count": 3,
+            "customerName": "客户1",
+            "customerPerson": "陈广",
+            "customerTelephone": "13376543210",
+            "customerMail": "123@163.com",
+            "customerAddress": "浙江省杭州市滨江区阿里园区"
+        },{
+            "goodsNo": "fcad81e3-5be7-4ed3-a78d-67758cc5f013",
+            "goodsName": "货物306",
+            "count": 1,
+            "customerName": "客户1",
+            "customerPerson": "陈广",
+            "customerTelephone": "13376543210",
+            "customerMail": "123@163.com",
+            "customerAddress": "浙江省杭州市滨江区阿里园区"
+        },{
+            "goodsNo": "a92f5575-2786-42d9-9801-4e32dec018b8",
+            "goodsName": "货物233",
+            "count": 5,
+            "customerName": "客户1",
+            "customerPerson": "陈广",
+            "customerTelephone": "13376543210",
+            "customerMail": "123@163.com",
+            "customerAddress": "浙江省杭州市滨江区阿里园区"
+        },{
+            "goodsNo": "28a54dfc-c8ee-4195-bb77-22e7c54fff96",
+            "goodsName": "货物963",
+            "count": 1,
+            "customerName": "客户2",
+            "customerPerson": "刘昂",
+            "customerTelephone": "13301234567",
+            "customerMail": "987@163.com",
+            "customerAddress": "浙江省杭州市滨江区网易园区"
+        },{
+            "goodsNo": "506922c6-9dc0-406b-b203-fc7e114557dc",
+            "goodsName": "货物3",
+            "count": 5,
+            "customerName": "客户2",
+            "customerPerson": "刘昂",
+            "customerTelephone": "13301234567",
+            "customerMail": "987@163.com",
+            "customerAddress": "浙江省杭州市滨江区网易园区"
+        },{
+            "goodsNo": "b88e1453-b7ce-42fb-97f3-ce53fd32bc30",
+            "goodsName": "天知道是啥东西",
+            "count": 1,
+            "customerName": "客户2",
+            "customerPerson": "刘昂",
+            "customerTelephone": "13301234567",
+            "customerMail": "987@163.com",
+            "customerAddress": "浙江省杭州市滨江区网易园区"
+        },{
+            "goodsNo": "98e4e5ad-8d1c-4b84-9f7a-a366013ea4ba",
+            "goodsName": "货物4",
+            "count": 4,
+            "customerName": "客户1",
+            "customerPerson": "陈广",
+            "customerTelephone": "13376543210",
+            "customerMail": "123@163.com",
+            "customerAddress": "浙江省杭州市滨江区阿里园区"
+        },{
+            "goodsNo": "fcad81e3-5be7-4ed3-a78d-67758cc5f013",
+            "goodsName": "货物306",
+            "count": 6,
+            "customerName": "客户1",
+            "customerPerson": "陈广",
+            "customerTelephone": "13376543210",
+            "customerMail": "123@163.com",
+            "customerAddress": "浙江省杭州市滨江区阿里园区"
+        }
+    ]
+}
