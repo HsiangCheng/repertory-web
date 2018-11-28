@@ -76,6 +76,7 @@
           <!-- 提交按钮 -->
           <div class="layui-input-block">
             <button class="layui-btn" lay-submit="" lay-filter="submit-btn">查询</button>
+            <button class="layui-btn" lay-submit="" lay-filter="export-btn">导出CSV</button>
             <button class="layui-btn layui-btn-primary" lay-submit="" lay-filter="reset-btn">重置</button>
           </div>
         </div>
@@ -93,6 +94,7 @@
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/moudle.js"></script>
 <script src="layui/layui.js"></script>
+<script src="js/verify.js"></script>
 
 <script>
 //JavaScript代码区域
@@ -104,6 +106,28 @@ layui.use(['element', 'table', 'form'], function(){
   // 侧边栏展开初始化
   $('#goods-nav').addClass('layui-nav-itemed');
   $('#goods-item').addClass('layui-this');
+
+  //监听查询
+  form.on('submit(submit-btn)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+
+  //监听导出
+  form.on('submit(export-btn)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '导出条件'
+    })
+    return false;
+  });
+
+  //监听重置
+  form.on('submit(reset-btn)', function(data){
+    initSearchForm();
+    return false;
+  });
 
   // 渲染数据表格
   table.render({
@@ -123,6 +147,12 @@ layui.use(['element', 'table', 'form'], function(){
       curr: location.hash.replace('#!page=', '')
       ,hash: 'page'
     }
+  });
+
+  // 注册表单校验规则
+  form.verify({
+    integer: validInteger
+    ,nullableNumber: validNumber
   });
 });
 </script>
