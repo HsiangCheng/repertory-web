@@ -14,10 +14,33 @@
   <!-- 左侧导航 -->
   <div id="left-nav" class="layui-side layui-bg-black"></div>
   
-  <div class="layui-body">
-    <!-- 内容主体区域 -->
-    <div style="padding: 20% 40%;">
-      <h1>欢迎来到仓储管理后台</h1>
+  <div class="layui-body cmm-div-container">
+    <!-- 查询表单区域 -->
+    <div class="layui-form layui-card layui-bg-gray" lay-filter="input-form">
+      <!-- 面板Header -->
+      <div class="layui-card-header"><h3>供应商导入</h3></div>
+      <!-- 面板Body -->
+      <div class="layui-card-body">
+        <!-- 一行表单项 -->
+        <div class="layui-form-item">
+          <!-- 人员编号 -->
+          <div class="layui-block">
+              <label class="layui-form-label">导入CSV</label>
+              <div class="layui-input-block layui-upload">
+                <button type="button" class="layui-btn" id="upload-start">开始导入</button>
+                <button type="button" class="layui-btn layui-btn-normal" id="file-select">选择文件</button>
+                <span id="error-info" style="color: #FF5722;"></span>
+                <button type="button" class="layui-btn layui-btn-xs layui-hide" id="retry">重新上传</button>
+              </div>
+          </div>
+          
+        </div>
+        <!-- 表单项到底了 -->
+      </div>
+    </div>
+    <!-- 数据表格区域 -->
+    <div>
+      <table id="main-table" lay-filter="main-table" class="layui-hide"></table>
     </div>
   </div>
   
@@ -26,12 +49,66 @@
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/moudle.js"></script>
 <script src="layui/layui.js"></script>
+<script src="js/verify.js"></script>
 
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
+layui.use(['element', 'table', 'form', 'upload'], function(){
   var element = layui.element;
+  var table = layui.table;
+  var form = layui.form;
+  var upload = layui.upload;
   
+  // 侧边栏展开初始化
+  $('#supplier-nav').addClass('layui-nav-itemed');
+  $('#import-supplier-item').addClass('layui-this');
+
+  // 渲染数据表格
+  table.render({
+    elem: '#main-table'
+    ,url: 'data/empty-table-data.json'
+    ,cols: [[
+      {type: 'numbers', title: '序号', align: 'center', width: 60}
+      ,{field: 'supplierNo', width: 120, title: '供应商编号'}
+      ,{field: 'supplierName', width: 150, title: '供应商名称'}
+      ,{field: 'supplierPerson', width: 120, title: '供应商代表'}
+      ,{field: 'supplierTelephone', width: 150, title: '联系电话'}
+      ,{field: 'supplierMail', width: 210, title: '电子邮箱'}
+      ,{field: 'supplierAddress', title: '供应商地址'}
+    ]]
+    ,page: {
+      curr: location.hash.replace('#!page=', '')
+      ,hash: 'page'
+    }
+  });
+
+  //选完文件后不自动上传
+  upload.render({
+    elem: '#file-select'
+    ,url: '/upload/'
+    ,auto: false
+    //,multiple: true
+    ,bindAction: '#upload-start'
+    ,accept: 'file'
+    ,acceptMime: 'file/csv'
+    ,exts: 'csv'
+    ,done: function(res){
+      console.log(res)
+      // 重置失败重试控件
+      errInfo.text('');
+      retryBtn.addClass('layui-hide');
+    }
+    ,error: function() {
+      //失败重传
+      var errInfo = $('#error-info');
+      var retryBtn = $('#retry');
+
+      errInfo.text('上传失败');
+      retryBtn.removeClass('layui-hide');
+
+      retryBtn.click(function(){uploadInst.upload();});
+    }
+  });
 });
 </script>
 </body>

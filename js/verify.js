@@ -26,5 +26,3 @@ function validNumber(text) {
         return '必须为数字';
     }
 }
-
-
